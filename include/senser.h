@@ -54,13 +54,13 @@ inline void bmp280_interrupt() {
 static uni_err_t init_senser() {
     Wire.begin();
     state.aht20 = aht20.begin();
+    state.bmp280 = bmp.begin();
     if (state.aht20 == FAIL) {
         Serial.println("Fail to start AHT20");
         return FAIL_INIT_AHT20_SENSER;
     }
     senser_aht20_ticker.attach_ms(500,aht20_interrupt);
 
-    state.bmp280 = bmp.begin();
     if (state.bmp280 == FAIL) {
         Serial.println(F("Could not find a valid BMP280 sensor, check wiring or "
                       "try a different address!"));
@@ -74,7 +74,6 @@ static uni_err_t init_senser() {
                  Adafruit_BMP280::STANDBY_MS_500); /* Standby time. */
     senser_bmp280_ticker.attach_ms(500,bmp280_interrupt);
     return SUCCESSFUL;
-
 }
 
 

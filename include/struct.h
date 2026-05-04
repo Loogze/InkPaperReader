@@ -46,7 +46,6 @@ typedef struct statis_run {
 }statis_run;
 
 #define FAIL 0
-#define SUCCESS 1
 
 static statis_run state;
 
