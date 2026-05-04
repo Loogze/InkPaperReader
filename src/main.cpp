@@ -1,8 +1,18 @@
 #include <Arduino.h>
+
+#include "init.h"
+#include "render.h"
+#include "struct.h"
+#include "senser.h"
+
 void setup() {
-// write your initialization code here
+    const unsigned long tick_start_init = millis();
+    init_GPIO();
+    init_senser();
+    Serial.printf("Taking %lu",millis() - tick_start_init);
 }
 
 void loop() {
-// write your code here
+
+
 }
